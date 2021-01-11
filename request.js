@@ -10,9 +10,13 @@ const promptUser = () => {
   let svcs = Object.keys(services)
   let choice = rls.keyInSelect(svcs, "What do you want to search for?")
   let svc = svcs[choice]
-
-  console.log(`Searching for appointment dates for: ${svc}`)
-  getAllDates(serviceToLocMap[svc], svc)
+  if(choice !== -1) {
+    console.log(`Searching for appointment dates for: ${svc}`)
+    getAllDates(serviceToLocMap[svc], svc)
+  }
+  else {
+    console.log("You canceled, goodbye")
+  }
 }
 
 const getAllServices = async (branch) => {
