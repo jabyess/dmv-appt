@@ -63,6 +63,8 @@ let successLog = (arr) => {
       parseURLIntoDate(d.config.url, locById)
       printDates(d.data)
     })
+    console.log("Make yer appt at: ")
+    console.log("https://nysdmvqw.us.qmatic.cloud/naoa/index.jsp")
     console.log("*===========================*")
   } else {
     console.log("No dates found, try again later bucko")
