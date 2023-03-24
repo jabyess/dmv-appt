@@ -23,7 +23,7 @@ const promptUser = async () => {
   const svc = svcs[choice]
 
   if(choice === svcs.length - 1) {
-    await _fetchServicesByLocation()
+    await _getServicesByLocation()
   }
   else if(choice !== -1) {
     console.log(`Searching for appointment dates for: ${svc}`)
@@ -40,12 +40,12 @@ const _getAllServicesByLocation = async () => {
     return true;
   } catch (err) {
     if (rls.keyInYN("Services file does not exist. Press Y to retrieve")) {
-      await _fetchServicesByLocation();
+      await _getServicesByLocation();
     }
   }
 };
 
-const _fetchServicesByLocation = async () => {
+const _getServicesByLocation = async () => {
   let allServicesAtLocation = {};
 
   console.log("Fetching...");
@@ -104,7 +104,7 @@ const svcBuilder = (locID) => {
 };
 
 // get all available dates for a given service at a given location
-const urlbuilder = (locID, svcID) => {
+const urlBuilder = (locID, svcID) => {
   let date = new Date().getTime();
   return `https://nysdmvqw.us.qmatic.cloud/qwebbook/rest/schedule/branches/${locID}/services/${svcID}/dates?_=${date}`;
 };
@@ -159,7 +159,7 @@ let getAllDates = (service) => {
   allServices[service].locations.forEach((loc) => {
     let { locId } = loc
     let serviceId = allServices[service].serviceId
-    let url = urlbuilder(locId, serviceId)
+    let url = urlBuilder(locId, serviceId)
     calls.push(axios.get(url))
   })
 
