@@ -23,7 +23,7 @@ const promptUser = async () => {
   const svc = svcs[choice]
 
   if(choice === svcs.length - 1) {
-    _fetchServicesByLocation()
+    await _fetchServicesByLocation()
   }
   else if(choice !== -1) {
     console.log(`Searching for appointment dates for: ${svc}`)
@@ -40,7 +40,7 @@ const _getAllServicesByLocation = async () => {
     return true;
   } catch (err) {
     if (rls.keyInYN("Services file does not exist. Press Y to retrieve")) {
-      _fetchServicesByLocation();
+      await _fetchServicesByLocation();
     }
   }
 };
