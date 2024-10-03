@@ -1,3 +1,7 @@
+# NOTICE
+
+This is no longer functional, DMV changed their site and you have to register with an email before you can make any appointments. It was fun while it lasted.
+
 # DMV appointments
 
 An alternative way of showing appointments for all locations, and all services at the NY state dmv.
